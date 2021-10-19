@@ -66,13 +66,13 @@ def delete():
 
 @app.after_request
 def after(response):
-    print(response.status)
-    print(response.headers)
-    print('RESPONSE HTML:')
-    data = response.get_data().decode('utf-8')
-    data = data.strip('\t')
-    for line in data.split('\n'):
-        print(line)
+    # print(response.status)
+    # print(response.headers)
+    # print('RESPONSE HTML:')
+    # data = response.get_data().decode('utf-8')
+    # data = data.strip('\t')
+    # for line in data.split('\n'):
+    #     print(line)
     return response
 
 if __name__ == '__main__':
