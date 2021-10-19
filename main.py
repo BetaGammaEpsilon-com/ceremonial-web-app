@@ -6,7 +6,6 @@ def connect_to_db():
     conn = sqlite3.connect('ceremonial-api.db')
     return conn
 
-
 # FIELDS: item_id, name, price, qty
 def create_inv_table():
     try:
@@ -30,6 +29,7 @@ def create_inv_table():
         conn.close()
 
 def add_item_to_inventory(item):
+    # print(item)
     inserted_item = {}
     try:
         conn = connect_to_db()
@@ -129,13 +129,13 @@ def ceremonial_api_get_item(item_id):
 # ADD NEW ITEM ENTRY
 @app.route('/ceremonial-api/items/add', methods=['POST'])
 def ceremonial_api_add_item_to_inventory():
-    item = request.form.to_dict()
+    item = request.json
     return jsonify(add_item_to_inventory(item))
 
 # UPDATE ITEM
 @app.route('/ceremonial-api/items/update', methods=['PUT'])
 def ceremonial_api_update_item():
-    item = request.form.to_dict()
+    item = request.json
     return jsonify(update_item(item))
 
 if __name__ == '__main__':
